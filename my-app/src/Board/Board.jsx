@@ -18,15 +18,20 @@ const BOARD_SIZE =10;
 
 const Board = () =>
 {
-    const [board, setBoard]=useState(
-     new Array(BOARD_SIZE).fill(0).map(row=> new Array(BOARD_SIZE).fill(0)),
-    );
+    const [board, setBoard]=useState(createBoard(BOARD_SIZE));
+    const [snakeCells, setSnakeCells]= useState(new Set([44]));
+    const [snake, setSnake]= useState(new SinglyLinkedList(44));
+    
     return (
     <div className="board">
         {board.map((row, rowIdx)=>(
             <div key={rowIdx} className="row">{
                 row.map((cell, cellIdx)=>(
-                    <div key={cellIdx} className={`cell ${true ? 'snake-cell' : ''}`}></div>
+                    <div 
+                    key={cellIdx} 
+                    className={`cell ${
+                        snakeCells.has(cellValue) ? 'snake-cell' : ''
+                    }`}></div>
                 ))
             }</div>
         ))}
@@ -34,4 +39,12 @@ const Board = () =>
          </div>
     );
 };
+const createBoard= BOARD_SIZE => {
+    let counter =1;
+    const board =[];
+    for(let row=0;row < BOARD_SIZE;row++)
+    {
+        
+    }
+}
 export default Board;
