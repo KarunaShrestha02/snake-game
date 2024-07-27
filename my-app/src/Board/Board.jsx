@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 import './Board.css';
+
+class LinkedListNode {
+    constructor(value){
+        this.value =value;
+        this.next= null;
+    }
+}
+class SinglyLinkedList {
+    constructor(value){
+        const node= new LinkedListNode(value);
+        this.head =node;
+        this.tail= node;
+    }
+}
 const BOARD_SIZE =10;
 
 const Board = () =>
@@ -12,7 +26,7 @@ const Board = () =>
         {board.map((row, rowIdx)=>(
             <div key={rowIdx} className="row">{
                 row.map((cell, cellIdx)=>(
-                    <div key={cellIdx} className="cell"></div>
+                    <div key={cellIdx} className={`cell ${true ? 'snake-cell' : ''}`}></div>
                 ))
             }</div>
         ))}
